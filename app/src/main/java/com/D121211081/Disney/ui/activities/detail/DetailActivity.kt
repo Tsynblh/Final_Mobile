@@ -75,16 +75,29 @@ class DetailActivity : ComponentActivity() {
                 fontWeight = FontWeight.Bold
             )
 ////      Abilities
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = selectedDisney?._id.toString(),
+                style = MaterialTheme.typography.bodySmall
+            )
+
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = selectedDisney?.createdAt.toString(),
+                text = selectedDisney?.tvShows.toString(),
                 style = MaterialTheme.typography.bodyMedium
             )
 //
             Spacer(modifier = Modifier.height(16.dp))
             Text(
-                text = selectedDisney?.allies.toString(),
+                text = selectedDisney?.createdAt.toString(),
                 style = MaterialTheme.typography.bodyMedium
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = selectedDisney?.sourceUrl.toString(),
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.Bold
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -92,17 +105,13 @@ class DetailActivity : ComponentActivity() {
                 text = selectedDisney?.url.toString(),
                 style = MaterialTheme.typography.bodyMedium
             )
-//            Spacer(modifier = Modifier.height(8.dp))
-//            Text(
-//                text = selectedDisney?.name.toString(),
-//                style = MaterialTheme.typography.headlineSmall,
-//                fontWeight = FontWeight.Bold
-//            )
-//            Spacer(modifier = Modifier.height(4.dp))
-//            Text(
-//                text = selectedDisney?.createdAt.toString(),
-//                style = MaterialTheme.typography.bodySmall
-//            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+                text = selectedDisney?.films.toString(),
+                style = MaterialTheme.typography.bodyMedium
+
+            )
         }
     }
 }
