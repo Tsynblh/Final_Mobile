@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -23,6 +24,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -48,15 +50,16 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = Color(0xFFFFF7D4)
                 ) {
                     Column {
                         CenterAlignedTopAppBar(
                             modifier = Modifier.background(Color.Blue),  // Change background color here
                             title = {
                                 Text(
-                                    text = "Popular",
+                                    text = "Disney Character",
                                     fontWeight = FontWeight.SemiBold,
+                                    fontSize = 30.sp
                                 )
                             }
                         )
@@ -71,10 +74,16 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     private fun ListDisneyScreen(mainUiState: MainUiState, modifier: Modifier = Modifier) {
-        when (mainUiState) {
-            is MainUiState.Loading -> Text(text = "Sedang Loading", fontSize = 16.sp)
-            is MainUiState.Error -> Text(text = "Terjadi Error", fontSize = 16.sp)
-            is MainUiState.Success -> DisneyList(mainUiState.disney)
+        Column(
+            modifier = modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            when (mainUiState) {
+                is MainUiState.Loading -> Text(text = "Sedang Loading", fontSize = 30.sp)
+                is MainUiState.Error -> Text(text = "Terjadi Error", fontSize = 30.sp)
+                is MainUiState.Success -> DisneyList(mainUiState.disney)
+            }
         }
     }
 
@@ -92,12 +101,13 @@ class MainActivity : ComponentActivity() {
         Box(
             modifier = Modifier
                 .padding(16.dp)
-                .border(1.dp, Color.Gray, RoundedCornerShape(8.dp),)
+                .border(3.dp, Color.White, RoundedCornerShape(8.dp),)
                 .clickable {
                     val intent = Intent(this, DetailActivity::class.java)
                     intent.putExtra("DISNEY", disney)
                     startActivity(intent)
                 }
+                .background(color = Color(0xFF9BB8CD))
         ) {
             Column(
                 modifier = Modifier

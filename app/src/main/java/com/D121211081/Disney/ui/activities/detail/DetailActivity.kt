@@ -3,6 +3,7 @@ package com.D121211081.Disney.ui.activities.detail
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -36,7 +38,7 @@ class DetailActivity : ComponentActivity() {
             DisneyTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = Color(0xFEFF86)
                 ) {
                     DetailScreen()
                 }
@@ -51,6 +53,7 @@ class DetailActivity : ComponentActivity() {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(16.dp)
+                .background(Color(0x146C94))
                 .verticalScroll(rememberScrollState())
         ) {
             // Disney Image (Portrait)
@@ -75,42 +78,40 @@ class DetailActivity : ComponentActivity() {
                 fontWeight = FontWeight.Bold
             )
 ////      Abilities
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = selectedDisney?._id.toString(),
-                style = MaterialTheme.typography.bodySmall
+                text = "ID: ${selectedDisney?._id.toString()}",
+                style = MaterialTheme.typography.bodyMedium
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = selectedDisney?.tvShows.toString(),
+                text = "TV Shows: ${selectedDisney?.tvShows.toString()}",
                 style = MaterialTheme.typography.bodyMedium
             )
 //
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = selectedDisney?.createdAt.toString(),
+                text = "Created At: ${selectedDisney?.createdAt.toString()}",
                 style = MaterialTheme.typography.bodyMedium
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = selectedDisney?.sourceUrl.toString(),
-                style = MaterialTheme.typography.headlineSmall,
-                fontWeight = FontWeight.Bold
+                text = "Source URL: ${selectedDisney?.sourceUrl.toString()}",
+                style = MaterialTheme.typography.bodyMedium,
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = selectedDisney?.url.toString(),
+                text = "URL: ${selectedDisney?.url.toString()}",
                 style = MaterialTheme.typography.bodyMedium
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = selectedDisney?.films.toString(),
+                text = "Films: ${selectedDisney?.films.toString()}",
                 style = MaterialTheme.typography.bodyMedium
-
             )
         }
     }
